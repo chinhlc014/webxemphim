@@ -16,7 +16,7 @@
                     <div class="w3_agile_featured_movies text-center">
                         @foreach ($newmovie as $item)
                         <div class="col-md-2 w3l-movie-gride-agile float-right">
-                            <a href="{{route('user.movie',$item->id)}}" title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="hvr-shutter-out-horizontal"><img src="{{'storage/app/poster/'.$item->poster_image}}" title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="img-responsive" alt=" " />
+                            <a href="{{route('user.movie',$item->id)}}" title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="hvr-shutter-out-horizontal"><img src="{{asset('storage/poster/'.$item->poster_image)}}" title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="img-responsive" alt=" " />
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
                             </a>
                             <div class="mid-1 agileits_w3layouts_mid_1_home">
