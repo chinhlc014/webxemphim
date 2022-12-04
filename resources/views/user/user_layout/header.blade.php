@@ -38,7 +38,7 @@
                 <div>
                     <ul class="nav pull-right">
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <h4><img src="{{asset('user/images/hi.gif')}}" style="padding-right: 10px;">Chào
+                                <h4>Chào
                                     {{ Auth::user()->name }}
                                 </h4> <b class="caret"></b>
                             </a>
@@ -75,7 +75,7 @@
                 @else
                 <div class="w3l_sign_in_register">
                     <ul>
-                        <li><img src="{{asset('user/images/hello.gif')}}" style="padding-right: 10px; width: 50px;"><a
+                        <li><a
                                 href="#" data-toggle="modal" data-target="#myModal">Đăng Nhập</a></li>
                     </ul>
                 </div>
