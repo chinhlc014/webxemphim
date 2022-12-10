@@ -1,11 +1,3 @@
-@if (round($movie->price)!=0)
-    @if ($bought!=1)
-        <script>
-            alert('Mời bạn mua phim để xem!');
-            window.location = '{{ URL::previous() }}';
-        </script>
-    @endif
-@endif
 @extends('user.master')
 @section('title','Xem Phim '.$movie->vie_name.' ('.$movie->eng_name.') - MinMovies')
 @section('content')
@@ -51,21 +43,6 @@
                         @if ($server==1)
                         {!!$item->link1!!}
                         @endif
-                        @if ($server==2)
-                        {!!$item->link2!!}
-                        @endif
-                        @if ($server==3)
-                        {!!$item->link3!!}
-                        @endif
-                        @if ($server==4)
-                        {!!$item->link4!!}
-                        @endif
-                        @if ($server==5)
-                        {!!$item->link5!!}
-                        @endif
-                        @if ($server==6)
-                        {!!$item->link6!!}
-                        @endif
                         @php
                         break;
                         @endphp
@@ -73,94 +50,15 @@
                         @endforeach
                     </div><br><br>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div>
-                                <button class="switch btn btn-info infobtn"><i class="fas fa-lightbulb"></i> <b>Tắt
-                                        đèn</b></button>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="pull-right">
-                                <!-- LikeBtn.com BEGIN -->
-                                <span class="likebtn-wrapper" data-identifier="detailmovie/{{$movie->id}}"
-                                    data-theme="ublue" data-lang="vi" data-ef_voting="push" data-rich_snippet="true" data-dislike_enabled="false"
-                                    data-show_dislike_label="true" data-counter_clickable="true"
-                                    data-counter_zero_show="true" data-counter_count="true" data-popup_width="0"
-                                    data-share_size="small" data-loader_show="true"
-                                    data-i18n_like_tooltip="Thích phim này!"
-                                    data-i18n_dislike_tooltip="Không thích phim này!"
-                                    data-i18n_share_text="Cảm ơn bạn đã thích phim!" data-i18n_popup_close="Tắt"></span>
-                                <script>
-                                    (function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");
-                                </script>
-                                <!-- LikeBtn.com END -->
-                                <a target="_blank" class="btn btn-info infobtn" title="Chia sẽ lên Facebook!"
-                                    href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}"><i
-                                        class="fab fa-facebook-square"></i> Facebook</a>
-                            </div>
-                        </div>
+                        
                     </div><br>
-                    @foreach ($link as $item2)
-                    @if ($item2->movie_id==$movie->id)
-                    @if ($item2->link1!='')
-                    @php
-                    $server=1;
-                    @endphp
-                    <a href="{{route('user.movie.watch',[$movie->id,$server])}}"
-                        class="btn btn-success btn-lg successbtn">Server
-                        1</a>
-                    @endif
-                    @if ($item2->link2!='')
-                    @php
-                    $server=2;
-                    @endphp
-                    <a href="{{route('user.movie.watch',[$movie->id,$server])}}"
-                        class="btn btn-success btn-lg successbtn">Server
-                        2</a>
-                    @endif
-                    @if ($item2->link3!='')
-                    @php
-                    $server=3;
-                    @endphp
-                    <a href="{{route('user.movie.watch',[$movie->id,$server])}}"
-                        class="btn btn-success btn-lg successbtn">Server
-                        3</a>
-                    @endif
-                    @if ($item2->link4!='')
-                    @php
-                    $server=4;
-                    @endphp
-                    <a href="{{route('user.movie.watch',[$movie->id,$server])}}"
-                        class="btn btn-success btn-lg successbtn">Server
-                        4</a>
-                    @endif
-                    @if ($item2->link5!='')
-                    @php
-                    $server=5;
-                    @endphp
-                    <a href="{{route('user.movie.watch',[$movie->id,$server])}}"
-                        class="btn btn-success btn-lg successbtn">Server
-                        5</a>
-                    @endif
-                    @if ($item2->link6!='')
-                    @php
-                    $server=6;
-                    @endphp
-                    <a href="{{route('user.movie.watch',[$movie->id,$server])}}"
-                        class="btn btn-success btn-lg successbtn">Server
-                        6</a>
-                    @endif
-                    @endif
-                    @endforeach
-                    <br><br>
-                    <p>Nếu phim bị lỗi bạn vui lòng chọn Server khác hoặc kiểm tra lại đường truyền và tải lại trang.
-                        Xin lỗi vì bất tiện này!</p>
+                    
                 </div>
             </div>
             <div class="col-md-4">
                 <div>
                     @if (session('username_minmovies'))
-                    <a href="{{ route('user.addCabinet',[session('username_minmovies'),$movie->id]) }}"
+                    <a href="{{ route('user.addCabinet',[Auth::user()->username,$movie->id]) }}"
                         class="btn btn-warning btn-lg btn-block warningbtn">Thêm vào tủ</a><br>
                     @else
                     <a href="#" data-toggle="modal" data-target="#myModal"
@@ -179,7 +77,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <a href="{{ route('user.movie',$item->id) }}">
-                                                    <img src="{{'storage/app/poster/'.$item->poster_image}}"
+                                                    <img src="{{asset('storage/poster/'.$item->poster_image)}}"
                                                         title="{{$item->vie_name.' ('.$item->eng_name.')'}}"
                                                         class="img-responsive img-fluid" alt=" " />
                                                 </a>
@@ -370,7 +268,7 @@
                                 <a href="{{route('user.movie',$item->id)}}"
                                     title="{{$item->vie_name.' ('.$item->eng_name.')'}}"
                                     class="hvr-shutter-out-horizontal">
-                                    <img src="{{'storage/app/poster/'.$item->poster_image}}"
+                                    <img src="{{asset('storage/poster/'.$item->poster_image)}}"
                                         title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="img-responsive"
                                         alt=" " />
                                     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i>
@@ -433,7 +331,7 @@
                             <div class="row carouselcontainer">
                                 @foreach ($suggest as $item)
                                 <div class="col-md-2 carouselitem"><a href="{{route('user.movie',$item->id)}}"
-                                        class="thumbnail"><img src="{{'storage/app/poster/'.$item->poster_image}}"
+                                        class="thumbnail"><img src="{{asset('storage/poster/'.$item->poster_image)}}"
                                             alt="Image" title="{{ $item->vie_name.' ('.$item->eng_name.')'}}"></a>
                                 </div>
                                 @endforeach
@@ -492,7 +390,7 @@
         follow_href:true
         });
 </script>
-<script src="public/user/js/owl.carousel2.js"></script>
+<script src="{{asset('user/js/owl.carousel2.js')}}"></script>
 <script>
     var vid = document.getElementById("myVideo");
     vid.onpause = function() {

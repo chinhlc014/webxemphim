@@ -306,52 +306,6 @@ i.glyphicon.glyphicon-play-circle {
     border-left: 5px solid transparent;
     transform: rotate(-90deg);
 }
-.ribbennew {
-   position: absolute;
-    top: 66%;
-    right: 16%;
-    padding: 10px 0 0 5px;
-    width: 40px;
-    height: 40px;
-}
-.ribbennew2 {
-     position: absolute;
-     top: 68%;
-     right: 10%;
-     padding: 10px 0 0 5px;
- }
-.ribbennew:after {
-    content: '';
-    position: absolute;
-    top: 86%;
-    right: 18%;
-    width: 0;
-    height: 0;
-}
-.ribbennew3 {
-    position: absolute;
-     top: 65%;
-     right: 23%;
-     padding: 10px 0 0 5px;
-     width: 40px;
-     height: 40px;
- }
- .ribbennew4 {
-    position: absolute;
-     top: 58%;
-     right: 23%;
-     padding: 10px 0 0 5px;
-     width: 40px;
-     height: 40px;
- }
- .ribbennew5 {
-    position: absolute;
-     top: 60%;
-     right: 19%;
-     padding: 10px 0 0 5px;
-     width: 40px;
-     height: 40px;
- }
 .ribben p {
     font-size:0.9em;
     color: #fff;

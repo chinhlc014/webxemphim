@@ -112,7 +112,7 @@
             </div>
             <div class="row">
                 <div class="col-md-3 pb-3">
-                <img class="img-thumbnail" src="{{'storage/app/poster/'.$movie->poster_image}}" alt="" title="{{asset('storage/app/poster/'.$movie->poster_image)}}">
+                <img class="img-thumbnail" src="{{asset('storage/poster/'.$movie->poster_image)}}" alt="" title="">
                 </div>
                 <div class="col-md-9">
                     <div class="pb-3">
@@ -120,7 +120,7 @@
                             <input type="file" name="poster" title="Ảnh Poster Phim" class="uploadimg custom-file-input"
                                 accept=".jpg, .png, image/jpeg, image/png">
                             <label class="custom-file-label" class="uploadimg"
-                                for="inputGroupFile01">{{'storage/app/poster/'.$movie->poster_image}}</label>
+                                for="inputGroupFile01">{{asset('storage/poster/'.$movie->poster_image)}}</label>
                         </div>
                     </div>
                     <div class="row">
@@ -164,27 +164,14 @@
                         <input type="text" class="form-control" name="txtActor" title="Danh sách diễn viên"
                             value="{{$movie->actor}}">
                     </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Trailer phim</span>
-                        </div>
-                        <input type="text" class="form-control" name="txtTrailer" title="Mã nhúng Trailer phim"
-                            value="{{$movie->trailer}}">
-                    </div>
 
                 </div>
             </div>
-            <div class="input-group pb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text admin_add_movie_title">Giá phim</span>
-                </div>
-                <input type="number" class="form-control" name="txtPrice" title="Giá phim" value="{{$movie->price}}" maxlength="8">
-            </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="input-group pb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 1</span>
+                            <span class="input-group-text admin_add_movie_title">Server</span>
                         </div>
                         @foreach ($link as $item)
                         @if ($movie->id==$item->movie_id)
@@ -193,80 +180,8 @@
                             @endphp
                         @endif
                         @endforeach
-                        <input type="text" class="form-control" name="txtServer1" title="Link phim Server 1"
+                        <input type="text" class="form-control" name="txtServer1" title="Link phim"
                             value="{{$link1}}">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 2</span>
-                        </div>
-                        @foreach ($link as $item)
-                        @if ($movie->id==$item->movie_id)
-                            @php
-                                $link2=$item->link2
-                            @endphp
-                        @endif
-                        @endforeach
-                        <input type="text" class="form-control" name="txtServer2" title="Link phim Server 2"
-                            value="{{$link2}}">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 3</span>
-                        </div>
-                        @foreach ($link as $item)
-                        @if ($movie->id==$item->movie_id)
-                            @php
-                                $link3=$item->link3;
-                            @endphp
-                        @endif
-                        @endforeach
-                        <input type="text" class="form-control" name="txtServer3" title="Link phim Server 3"
-                            value="{{$link3}}">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 4</span>
-                        </div>
-                        @foreach ($link as $item)
-                        @if ($movie->id==$item->movie_id)
-                            @php
-                                $link4=$item->link4
-                            @endphp
-                        @endif
-                        @endforeach
-                        <input type="text" class="form-control" name="txtServer4" title="Link phim Server 4"
-                            value="{{$link4}}">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 5</span>
-                        </div>
-                        @foreach ($link as $item)
-                        @if ($movie->id==$item->movie_id)
-                            @php
-                                $link5=$item->link5
-                            @endphp
-                        @endif
-                        @endforeach
-                        <input type="text" class="form-control" name="txtServer5" title="Link phim Server 5"
-                            value="{{$link5}}">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 6</span>
-                        </div>
-                        @foreach ($link as $item)
-                        @if ($movie->id==$item->movie_id)
-                            @php
-                                $link6=$item->link6
-                            @endphp
-                        @endif
-                        @endforeach
-                        <input type="text" class="form-control" name="txtServer6" title="Link phim Server 6"
-                            value="{{$link6}}">
                     </div>
                 </div>
             </div>

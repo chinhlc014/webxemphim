@@ -69,7 +69,7 @@
                                 </td>
                                 <td>
                                     <div class="imgMovieList">
-                                        <img src="{{'storage/app/poster/'.$item->poster_image}}" alt="">
+                                        <img src="{{asset('storage/poster/'.$item->poster_image)}}" alt="">
                                     </div>
                                 </td>
                                 <td><a href="{{ route('admin.movie.edit',$item->id) }}"><i class="far fa-edit fa-lg"></i></a></td>

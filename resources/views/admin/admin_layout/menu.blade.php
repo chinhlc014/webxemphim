@@ -90,47 +90,7 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Quản Lý Giao Dịch
-    </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayment"
-            aria-expanded="true" aria-controls="collapsePayment">
-            <i class="fas fa-shopping-cart"></i>
-            <span>Giao dịch</span>
-        </a>
-        <div id="collapsePayment" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Danh mục quản lý</h6>
-                <a class="collapse-item" href="{{ route('admin.walletCharge.list') }}"><i class="far fa-file-invoice-dollar text-lg pr-2 ml-1 mr-1"></i>Nạp ví</a>
-                <a class="collapse-item" href="{{ route('admin.payment.list') }}"><i class="fas fa-shopping-basket pr-2 text-lg"></i>Mua phim</a>
-            </div>
-        </div>
-    </li>
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-    <div class="sidebar-heading">
-        Quản Lý Thống Kê
-    </div>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStatistic"
-            aria-expanded="true" aria-controls="collapseStatistic">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Thống kê</span>
-        </a>
-        <div id="collapseStatistic" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Danh mục thống kê</h6>
-                <a class="collapse-item" href="{{ route('admin.statistic.charge') }}"><i class="fas fa-money-check-alt pr-2 text-lg"></i>Nạp ví</a>
-                <a class="collapse-item" href="{{ route('admin.statistic.payment') }}"><i class="far fa-badge-dollar text-lg pr-2" style="padding-left:2px;margin-right:2px;"></i>Mua phim</a>
-            </div>
-        </div>
-    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

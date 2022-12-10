@@ -16,7 +16,7 @@
 <link href="{{asset('user/fontawesome-free/css/all.min.css')}}" rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="https://cdn.plyr.io/3.5.6/plyr.css" />
 <script src="https://cdn.plyr.io/3.5.6/plyr.js"></script>
-<link rel="stylesheet" href="{{asset('admin/css/jConfirm.css')}}">
+<link rel="stylesheet" href="{{asset('adm/css/jConfirm.css')}}">
 
 <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -103,5 +103,5 @@ $(document).ready(function(){
 	});
 	</script>
 <!-- Tooltip -->
-<script src="{{asset('admin/js/jConfirm.min.js')}}"></script>
+<script src="{{asset('adm/js/jConfirm.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('user/js/jquery.allofthelights-min.js')}}"></script>

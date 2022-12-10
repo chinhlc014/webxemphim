@@ -13,13 +13,11 @@
 	}
 	include 'php/header.php';
 	include 'php/slide.php';
-	include 'php/social.php';
 	include 'php/body.php';
     include 'php/footer.php'; --}}
     @include('user.user_layout.header')
     {{-- Phần main --}}
     @yield('content')
-    @include('user.user_layout.social')
     @include('user.user_layout.footer')
     <script type="text/javascript">
         //Tự tắt thông báo

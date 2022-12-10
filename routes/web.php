@@ -8,10 +8,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\NationController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\RateController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\WalletController;
 use App\Http\Controllers\YearController;
 use Illuminate\Support\Facades\Route;
 
@@ -107,25 +104,8 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
     //Admin manage charge wallet
-
-    Route::group(['prefix' => 'wallet', 'middleware' => 'AdminMiddleware'], function () {
-        Route::get('list', [WalletController::class, 'walletCharge'])->name('admin.walletCharge.list');
-    });
-
-    //Admin manage payment
-
-    Route::group(['prefix' => 'payment', 'middleware' => 'AdminMiddleware'], function () {
-        Route::get('list', [PaymentController::class, 'paymentList'])->name('admin.payment.list');
-    });
-
     //Admin manage statistic
 
-    Route::group(['prefix' => 'statistic', 'middleware' => 'AdminMiddleware'], function () {
-        Route::get('payment', [AdminController::class, 'statisticPayment'])->name('admin.statistic.payment');
-        Route::post('payment', [AdminController::class, 'sortPayment'])->name('admin.statistic.sort_payment');
-        Route::get('charge', [AdminController::class, 'statisticCharge'])->name('admin.statistic.charge');
-        Route::post('charge', [AdminController::class, 'sortCharge'])->name('admin.statistic.sort_charge');
-    });
 });
 
 //User routes
@@ -141,7 +121,6 @@ Route::group(['prefix' => 'movie'], function () {
     Route::get('watch/{id}/{server}', [MovieController::class, 'watchmovie'])->name('user.movie.watch');
 });
 Route::get('list', [MovieController::class, 'getlist'])->name('user.list');
-Route::get('trailer', [MovieController::class, 'gettrailer'])->name('user.trailer');
 Route::get('search', [MovieController::class, 'getSearch']);
 Route::get('getHint/{q}', [MovieController::class, 'getHint'])->name('user.getHint');
 Route::post('search', [MovieController::class, 'postSearch'])->name('user.search');
@@ -168,7 +147,6 @@ Route::get('signup', [UserController::class, 'getsignup']);
 Route::post('signup', [UserController::class, 'signupuser'])->name('user.signup');
 Route::get('profile', [UserController::class, 'getProfile'])->name('user.getProfile')->middleware('UserMiddleware')->middleware('UserMiddleware');
 Route::post('profile', [UserController::class, 'postProfile'])->name('user.postProfile')->middleware('UserMiddleware')->middleware('UserMiddleware');
-Route::get('history', [UserController::class, 'historyPayment'])->name('user.historyPayment')->middleware('UserMiddleware')->middleware('UserMiddleware');
 
 
 ///Recover password
@@ -190,23 +168,6 @@ Route::post('comment/{movie_id}', [CommentController::class, 'postComment'])->na
 Route::post('editComment/{comment_id}', [CommentController::class, 'editComment'])->name('user.editComment');
 Route::get('delComment/{comment_id}', [CommentController::class, 'delComment'])->name('user.delComment');
 
-//Rate
-Route::post('rate/{movie_id}/{user_id}', [RateController::class, 'postRate'])->name('user.postRate');
-
-///Wallet
-
-Route::group(['prefix' => 'wallet', 'middleware' => 'UserMiddleware'], function () {
-    Route::get('/', [WalletController::class, 'getWallet'])->name('user.getWallet');
-    Route::get('charge', [WalletController::class, 'getChargeWallet'])->name('user.getChargeWallet');
-    Route::post('charge', [WalletController::class, 'postChargeWallet'])->name('user.postChargeWallet');
-    Route::get('saveChargeWallet/{username}', [WalletController::class, 'saveChargeWallet'])->name('user.saveChargeWallet');
-});
-
-///Buy movie
-
-Route::group(['prefix' => 'payment', 'middleware' => 'UserMiddleware'], function () {
-    Route::get('buy/{movie_id}', [PaymentController::class, 'buyMovie'])->name('user.buyMovie');
-});
 
 ///Reject All
 

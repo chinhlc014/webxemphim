@@ -19,14 +19,7 @@
                         <input type="submit" value="Tìm">
                         <div class="text-center">
                             <ul class="nav pull-center" style="position: relative">
-                                <li class="dropdown"><a href="#" id="hoverHint" data-toggle="dropdown">
-                                    <b class="caret"></b>
-                                </a>
-                                    <ul class="dropdown-menu pull-center">
-                                        <li class="loggedin text-center text-black">
-                                            <a href="#" id="txtHint" class="text-black"></a>
-                                        </li>
-                                    </ul>
+                                <li class="dropdown">
                                 </li>
                             </ul>
                         </div>
@@ -35,42 +28,37 @@
             </div>
             <div class="col-md-4 text-center">
                 @if (session('username_minmovies'))
-                <div>
-                    <ul class="nav pull-right">
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <h4>Chào
-                                    {{ Auth::user()->name }}
-                                </h4> <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu pull-center">
-                                <li class="loggedin"><a href="{{ route('user.getCabinet') }}"><i class="fad fa-film-alt"
-                                            style="margin-right:14px; --fa-primary-color: black; --fa-secondary-color: dodgerblue; --fa-secondary-opacity: 1.0;"></i>Tủ
-                                        phim</a>
-                                </li>
-                                <li class="loggedin"><a href="{{ route('user.boughtMovie') }}"><i
-                                            class="fad fa-shopping-basket"
-                                            style="margin-right:12px; --fa-primary-color: peru; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Phim
-                                        đã mua</a>
-                                </li>
-                                <li class="loggedin"><a href="{{ route('user.getWallet') }}"><i class="fad fa-wallet"
-                                            style="margin-right:15px; --fa-primary-color: gold; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Ví</a>
-                                </li>
-                                <li class="loggedin"><a href="{{ route('user.getProfile') }}"><i
-                                            class="fad fa-user-edit"
-                                            style="margin-right:10px; --fa-primary-color: limegreen; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Hồ
-                                        sơ</a></li>
-                                <li class="loggedin"><a href="{{ route('user.historyPayment') }}"><i
-                                            class="fad fa-history"
-                                            style="margin-right:14px; --fa-primary-color: deeppink; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Lịch
-                                        sử giao dịch</a></li>
-                                <li class="divider"></li>
-                                <li class="loggedin"><a href="{{ route('user.logout') }}"><i class="fad fa-sign-out-alt"
-                                            style="margin-right:14px; --fa-primary-color: crimson; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Đăng
-                                        xuất</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                <div class="row">
+                    <div class="col-md-6">
+                        @if(Auth::user()->level == 1)
+                            <a href="{{ route('admin.index') }}" class="btn btn-success pull-right go-to-admin">Đến trang quản trị</a>
+                        @endif
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="nav pull-right">
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <h4>Chào
+                                        {{ Auth::user()->name }}
+                                    </h4> <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu pull-center">
+                                    <li class="loggedin"><a href="{{ route('user.getCabinet') }}"><i class="fad fa-film-alt"
+                                                style="margin-right:14px; --fa-primary-color: black; --fa-secondary-color: dodgerblue; --fa-secondary-opacity: 1.0;"></i>Tủ
+                                            phim</a>
+                                    </li>
+                                    <li class="loggedin"><a href="{{ route('user.getProfile') }}"><i
+                                                class="fad fa-user-edit"
+                                                style="margin-right:10px; --fa-primary-color: limegreen; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Hồ
+                                            sơ</a></li>
+                                    <li class="divider"></li>
+                                    <li class="loggedin"><a href="{{ route('user.logout') }}"><i class="fad fa-sign-out-alt"
+                                                style="margin-right:14px; --fa-primary-color: crimson; --fa-secondary-color: black; --fa-secondary-opacity: 1.0;"></i>Đăng
+                                            xuất</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 @else
                 <div class="w3l_sign_in_register">
@@ -226,7 +214,6 @@
                             </ul>
                         </li>
                         <li><a href="{{ route('user.list') }}">danh sách phim</a></li>
-                        <li><a href="{{ route('user.trailer') }}">trailers phim</a></li>
                         <li><a href="{{ route('user.about') }}">giới thiệu</a></li>
                     </ul>
                 </nav>

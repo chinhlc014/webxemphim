@@ -138,57 +138,13 @@
                 </div>
                 <input type="text" class="form-control" name="txtActor" title="Danh sách diễn viên">
             </div>
-            <div class="input-group pb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text admin_add_movie_title">Trailer phim</span>
-                </div>
-                <input type="text" class="form-control" name="txtTrailer" title="Mã nhúng Trailer phim">
-            </div>
-            <div class="input-group pb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text admin_add_movie_title">Giá phim</span>
-                </div>
-                <input type="number" class="form-control" name="txtPrice" title="Giá phim" maxlength="8">
-            </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-12">
                     <div class="input-group pb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 1</span>
+                            <span class="input-group-text admin_add_movie_title">Server</span>
                         </div>
-                        <input type="text" class="form-control" name="txtServer1" title="Link phim Server 1">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 2</span>
-                        </div>
-                        <input type="text" class="form-control" name="txtServer2" title="Link phim Server 2">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 3</span>
-                        </div>
-                        <input type="text" class="form-control" name="txtServer3" title="Link phim Server 3">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 4</span>
-                        </div>
-                        <input type="text" class="form-control" name="txtServer4" title="Link phim Server 4">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 5</span>
-                        </div>
-                        <input type="text" class="form-control" name="txtServer5" title="Link phim Server 5">
-                    </div>
-                    <div class="input-group pb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text admin_add_movie_title">Server 6</span>
-                        </div>
-                        <input type="text" class="form-control" name="txtServer6" title="Link phim Server 6">
+                        <input type="text" class="form-control" name="txtServer1" title="Link phim">
                     </div>
                 </div>
             </div>

@@ -33,7 +33,6 @@ class CreateMoviesTable extends Migration
             $table->string('quality');
             $table->string('point');
             $table->string('time');
-            $table->decimal('price',11,3);
             $table->timestamps();
         });
     }

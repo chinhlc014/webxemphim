@@ -47,12 +47,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Comment');
     }
-    public function wallet()
-    {
-        return $this->hasOne('App\Wallet');
-    }
-    public function walletcharge()
-    {
-        return $this->hasMany('App\WalletCharge');
-    }
 }

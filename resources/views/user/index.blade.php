@@ -49,15 +49,6 @@
                                 @endif
                                 @endforeach
                             </div>
-                            <div class="ribbennew3">
-                                <span class="badge badge-pill badge-danger price2 text-center" style="margin-top:5px">
-                                    @if ($item->price==0)
-                                    Miễn phí
-                                    @else
-                                    {{ number_format(round($item->price)).'đ' }}
-                                    @endif
-                                </span>
-                            </div>
                         </div>
                         @endforeach
                         <div class="clearfix"> </div>
@@ -98,15 +89,6 @@
                             </a>
                             @endif
                             @endforeach
-                        </div>
-                        <div class="ribbennew3">
-                            <span class="badge badge-pill badge-danger price2 text-center" style="margin-top:5px">
-                                @if ($item->price==0)
-                                Miễn phí
-                                @else
-                                {{ number_format(round($item->price)).'đ' }}
-                                @endif
-                            </span>
                         </div>
                     </div>
                     @endforeach

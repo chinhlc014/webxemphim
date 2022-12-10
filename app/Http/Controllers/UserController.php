@@ -60,11 +60,6 @@ class UserController extends Controller
         $user->email = $request->txtEmail;
         $user->level = $request->rdoLevel;
         $user->save();
-
-        $wallet = new Wallet();
-        $wallet->user_id = $user->id;
-        $wallet->money = 0;
-        $wallet->save();
         return redirect()->route('admin.user.list')->with(['thongbao_level' => 'success', 'thongbao' => 'Thêm người dùng thành công!']);
     }
 
@@ -123,8 +118,6 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-        $wallet = Wallet::where('user_id', $id)->first();
-        $wallet->delete();
         $user->delete();
         return redirect()->route('admin.user.list')->with(['thongbao_level' => 'success', 'thongbao' => "Xoá người dùng thành công"]);
     }
@@ -162,10 +155,6 @@ class UserController extends Controller
         $user->level = 0;
         $user->save();
 
-        $wallet = new Wallet();
-        $wallet->user_id = $user->id;
-        $wallet->money = 0;
-        $wallet->save();
         return redirect()->back()->with(['thongbao_level' => 'success', 'thongbao' => "<b>Đăng ký tài khoản thành công!</b><br>Mời bạn đăng nhập."]);
     }
     public function getProfile()
@@ -202,17 +191,5 @@ class UserController extends Controller
         }
         return redirect()->route('user.getProfile')->with(['thongbao_level' => 'success', 'thongbao' => "<b>Sửa thông tin tài khoản thành công!</b>"]);
     }
-    public function historyPayment()
-    {
-        $cate = Cate::all();
-        $nation = Nation::all();
-        $year = Year::all();
-        $movie = Movie::all();
-        $username = session('username_minmovies');
-        $user = User::where('username', $username)->first();
-        $user_id = $user->id;
-        $payment = Payment::where('user_id', $user_id)->paginate(10);
-        $walletCharge = WalletCharge::where('user_id', $user_id)->paginate(10);
-        return view('user.history', compact('cate', 'nation', 'year', 'movie', 'payment', 'walletCharge'));
-    }
+
 }

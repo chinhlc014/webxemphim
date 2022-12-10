@@ -12,7 +12,6 @@ use App\Models\Nation;
 use App\Models\Year;
 use App\Models\Language;
 use App\Models\Payment;
-use App\Models\WalletCharge;
 use Auth;
 use Illuminate\Support\Carbon;
 
@@ -30,9 +29,8 @@ class AdminController extends Controller
         $nation = Nation::all();
         $year = Year::all();
         $language = Language::all();
-        $wallet_charge = WalletCharge::all();
         $payment = Payment::all();
-        return view('admin.index', compact('movie', 'user', 'cabinet', 'comment', 'cate', 'nation', 'year', 'language', 'wallet_charge', 'payment'));
+        return view('admin.index', compact('movie', 'user', 'cabinet', 'comment', 'cate', 'nation', 'year', 'language', 'payment'));
     }
 
     public function getLogin()
@@ -107,38 +105,6 @@ class AdminController extends Controller
     public function statisticCharge()
     {
         $user = User::all();
-        $charge2 = WalletCharge::all()->unique('user_id');
-        $charge = WalletCharge::all();
-        return view('admin.statistic.charge', compact('charge', 'charge2', 'user'));
+        return view('admin.statistic.charge', compact( 'user'));
     }
-    public function sortCharge(Request $request)
-    {
-
-        $user = User::all();
-        $charge2=WalletCharge::all()->unique('user_id');
-        if($request->sortID && $request->sortIDYear)
-        {
-            $sortID=$request->sortID;
-            $sortIDYear=$request->sortIDYear;
-            $charge = WalletCharge::whereYear('created_at', $request->sortIDYear)->whereMonth('created_at', $request->sortID)->get();
-            return view('admin.statistic.charge', compact('charge', 'charge2', 'user','sortID','sortIDYear'));
-        }
-        else if ($request->sortID) {
-            $sortID=$request->sortID;
-            $charge = WalletCharge::whereMonth('created_at', $request->sortID)->get();
-            return view('admin.statistic.charge', compact('charge', 'charge2', 'user','sortID'));
-        }
-        else if ($request->sortIDYear) {
-            $sortIDYear=$request->sortIDYear;
-            $charge = WalletCharge::whereYear('created_at', $request->sortIDYear)->get();
-            return view('admin.statistic.charge', compact('charge', 'charge2', 'user','sortIDYear'));
-        }
-        else
-        {
-            $charge = WalletCharge::all();
-            return view('admin.statistic.charge', compact('charge', 'charge2', 'user'));
-        }
-
-    }
-
 }

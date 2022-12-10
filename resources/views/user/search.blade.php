@@ -34,7 +34,7 @@
                             <a href="{{route('user.movie',$item->id)}}"
                                 title="{{$item->vie_name.' ('.$item->eng_name.')'}}"
                                 class="hvr-shutter-out-horizontal"><img
-                                    src="{{'storage/app/poster/'.$item->poster_image}}"
+                                    src="{{asset('storage/poster/'.$item->poster_image)}}"
                                     title="{{$item->vie_name.' ('.$item->eng_name.')'}}" class="img-responsive"
                                     alt=" " />
                                 <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
@@ -70,16 +70,6 @@
                                 </a>
                                 @endif
                                 @endforeach
-                            </div>
-                            <div class="ribbennew3">
-                                <span
-                                    class="badge badge-pill badge-danger price2 text-center" style="margin-top:5px">
-                                    @if ($item->price==0)
-                                        Miễn phí
-                                    @else
-                                    {{ number_format(round($item->price)).'đ' }}
-                                    @endif
-                                </span>
                             </div>
                         </div>
                         @endforeach

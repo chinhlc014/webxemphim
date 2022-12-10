@@ -11,7 +11,6 @@ use App\Models\Year;
 use App\Models\Image;
 use App\Models\Movie;
 use App\Models\Nation;
-use App\Models\Wallet;
 use App\Models\Comment;
 use App\Models\Payment;
 use App\Models\Language;
@@ -32,14 +31,11 @@ class MovieController extends Controller
 
     public function detailmovie($id)
     {
-        $wallet = '';
-        $payment = '';
+        
         if (session('username_minmovies')) {
             $username = session('username_minmovies');
             $user = User::where('username', $username)->first();
             $user_id = $user->id;
-            $wallet = Wallet::where('user_id', $user_id)->get();
-            $payment = Payment::where('user_id', $user_id)->where('movie_id', $id)->get();
         } else
             $user_id = 0;
         $cate = Cate::all();
@@ -69,7 +65,7 @@ class MovieController extends Controller
         }
 
 
-        return view('user.detailmovie', compact('slider', 'id', 'movie', 'cate', 'nation', 'year', 'language', 'user', 'comment', 'wallet', 'payment', 'user_id', 'averageRate', 'totalRate'));
+        return view('user.detailmovie', compact('slider', 'id', 'movie', 'cate', 'nation', 'year', 'language', 'user', 'comment', 'user_id', 'averageRate', 'totalRate'));
     }
     public function watchmovie($id, $server)
     {
@@ -78,11 +74,6 @@ class MovieController extends Controller
             $username = session('username_minmovies');
             $user = User::where('username', $username)->first();
             $user_id = $user->id;
-            $wallet = Wallet::where('user_id', $user_id)->get();
-            $payment = Payment::where('user_id', $user_id)->where('movie_id', $id)->get();
-            if (!$payment->isEmpty()) {
-                $bought = 1;
-            }
         }
         $language = Language::all();
         $cate = Cate::all();
@@ -96,7 +87,7 @@ class MovieController extends Controller
         $link = Link::all();
         $comment = Comment::where('movie_id', $id)->get();
         $user = User::all();
-        return view('user.watchmovie', compact('suggest', 'id', 'movie', 'cate', 'nation', 'year', 'link', 'server', 'slider', 'language', 'user', 'comment', 'sliderCate', 'bought'));
+        return view('user.watchmovie', compact('suggest', 'id', 'movie', 'cate', 'nation', 'year', 'link', 'server', 'slider', 'language', 'user', 'comment', 'sliderCate'));
     }
 
 
@@ -167,19 +158,12 @@ class MovieController extends Controller
         $movie->time = $request->txtTime . ' Phút';
         $movie->quality = $request->txtQuality;
         $movie->actor = $request->txtActor;
-        $movie->trailer = $request->txtTrailer;
         $movie->eng_name = $request->txtEngname;
-        $movie->price = $request->txtPrice;
         $movie->save();
         $request->poster->storeAs('poster', $filename);
         $link = new Link;
         $link->movie_id = $movie->id;
         $link->link1 = $requestlink->txtServer1;
-        $link->link2 = $requestlink->txtServer2;
-        $link->link3 = $requestlink->txtServer3;
-        $link->link4 = $requestlink->txtServer4;
-        $link->link5 = $requestlink->txtServer5;
-        $link->link6 = $requestlink->txtServer6;
         $link->save();
         return redirect()->route('admin.movie.list')->with(['thongbao_level' => 'success', 'thongbao' => 'Thêm phim thành công!']);
     }
@@ -257,18 +241,11 @@ class MovieController extends Controller
         $movie->time = $request->txtTime;
         $movie->quality = $request->txtQuality;
         $movie->actor = $request->txtActor;
-        $movie->trailer = $request->txtTrailer;
         $movie->eng_name = $request->txtEngname;
-        $movie->price = $request->txtPrice;
         $movie->save();
         $link = new Link;
         $arr['movie_id'] = $movie->id;
         $arr['link1'] = $requestlink->txtServer1;
-        $arr['link2'] = $requestlink->txtServer2;
-        $arr['link3'] = $requestlink->txtServer3;
-        $arr['link4'] = $requestlink->txtServer4;
-        $arr['link5'] = $requestlink->txtServer5;
-        $arr['link6'] = $requestlink->txtServer6;
         $link::where('movie_id', $movie->id)->update($arr);
         return redirect()->route('admin.movie.list')->with(['thongbao_level' => 'success', 'thongbao' => 'Sửa phim thành công!']);
     }
@@ -296,7 +273,6 @@ class MovieController extends Controller
         $user = User::where('username', $username)->first();
         $user_id = $user->id;
         $movie = Movie::all();
-        $payment = Payment::where('user_id', $user_id)->paginate(24);
         return view('user.boughtMovie', compact('cate', 'nation', 'year', 'payment', 'movie', 'language'));
     }
     public  function getHint($q)
